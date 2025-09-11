@@ -1,0 +1,8 @@
+Please cite the methodology as:
+Kline, P., Saggio, R., and Sølvsten, M. (2020), "Leave-Out Estimation of Variance Components," Econometrica 88(5): 1859–1898.
+
+Original MATLAB implementation:
+https://github.com/rsaggio87/LeaveOutTwoWay
+
+R translation:
+This repository (LeaveOutKSS-R) by V. Moghani.
