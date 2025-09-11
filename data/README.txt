@@ -20,8 +20,7 @@ Files used by examples:
      V5 = y (outcome)
    Used by: 03_lincom_example.R
 
-3) large_fake_data.csv (large)
-   Either place here or let 04_large_no_controls.R download it.
+3) large_fake_data.csv (large) -- Let examples/04_large_no_controls.R download it.
    Expected columns:
      col1 = id
      col2 = firmid
