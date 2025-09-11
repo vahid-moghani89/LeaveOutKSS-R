@@ -1,0 +1,19 @@
+Install + Setup
+===============
+
+1) R dependencies (install if missing)
+--------------------------------------
+I use these:
+Matrix, data.table, igraph, tictoc, sanic, doParallel, foreach, slam, spam, dplyr
+
+2) Sourcing functions
+---------------------
+I keep core code in ./functions and source everything before running.
+Each example script does this automatically:
+
+  fx <- list.files("functions", full.names = TRUE, pattern = "\\.R$")
+  invisible(lapply(fx, source))
+
+3) Data
+-------
+Column expectations for the examples are in data/README.txt.
