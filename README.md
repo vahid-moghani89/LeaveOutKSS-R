@@ -4,8 +4,8 @@ LeaveOutKSS-R
 What this is
 ------------
 R translation of the leave-out correction (KSS) for variance components in
-two-way fixed effects (AKM). This repo mirrors my MATLAB workflow but in R.
-Goal: make it easy to run on large admin-style panels.
+two-way fixed effects (AKM). This repo mirrors the MATLAB workflow but in R.
+See the original package at: https://github.com/rsaggio87/LeaveOutTwoWay
 
 What you get (main pieces)
 --------------------------
