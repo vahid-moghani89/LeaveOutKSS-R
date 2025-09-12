@@ -21,16 +21,16 @@ How to run (quick)
 
 Examples
 --------
-01_basic_no_controls.R
+- 01_basic_no_controls.R
     Minimal run (no controls), prints decomposition, writes a CSV of pe/fe.
-02_with_controls_year_FE.R
+- 02_with_controls_year_FE.R
     Adds year dummies as controls (partialling-out), then runs KSS.
-03_lincom_example.R
+- 03_lincom_example.R
     After estimating FE/PE, regresses firm FE on a Z (e.g., region).
-04_large_no_controls.R
+- 04_large_no_controls.R
     Large dataset runner. Downloads or reads a big CSV, uses JLA and parallel.
 
-Notes (for myself)
+Notes 
 ------------------
 - Leave-out granularity: "matches" is my default (robust to within-match serial correlation).
 - For big n: use type_algorithm="JLA" with simulations_JLA ~ 50–200.
@@ -40,7 +40,7 @@ Notes (for myself)
 Provenance
 ----------
 Method: Kline–Saggio–Sølvsten (Econometrica, 2020).
-This R code is my own translation; link to the original MATLAB package in CITATION.txt.
+This R code is my own translation of the author's MATLAB package.
 
 License
 -------
