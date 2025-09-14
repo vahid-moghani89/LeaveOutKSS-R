@@ -9,6 +9,8 @@ if (length(to_install)) install.packages(to_install)
 
 invisible(lapply(required_packages, require, character.only = TRUE))
 
+shift <- data.table::shift
+
 ## source ALL function files from ./functions
 fx <- list.files("functions", full.names = TRUE, pattern = "\\.R$")
 stopifnot(length(fx) > 0)  # I want this to fail if the folder is empty
