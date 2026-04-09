@@ -1,7 +1,20 @@
 rsquared_comp <- function(y, id, firmid,
-                        controls = NULL) {
+                        controls = NULL,
+                        filename = "rsquared_comp",
+                        print_output = FALSE) {
   
   no_controls <- 0
+  log_file <- paste0(filename, ".txt")
+  log_dir <- dirname(log_file)
+  if (!dir.exists(log_dir)) {
+    dir.create(log_dir, recursive = TRUE)
+  }
+  log_con <- file(log_file, open = "wt")
+  sink(log_con, split = print_output)
+  on.exit({
+    sink()
+    close(log_con)
+  }, add = TRUE)
   
   # Check for minimum required arguments
   if (missing(y) | missing(id) | missing(firmid)) {

@@ -7,9 +7,21 @@ leave_out_KSS_fe <- function(y, id, firmid,
                           lincom_do = 0,
                           Z_lincom = NULL,
                           labels_lincom = NULL,
-                          filename = 'leave_out_estimates', paral = TRUE,Cd = 12345) {
+                          filename = 'leave_out_estimates', paral = TRUE, Cd = 12345,
+                          print_output = FALSE) {
   
   no_controls <- 0
+  log_file <- paste0(filename, ".txt")
+  log_dir <- dirname(log_file)
+  if (!dir.exists(log_dir)) {
+    dir.create(log_dir, recursive = TRUE)
+  }
+  log_con <- file(log_file, open = "wt")
+  sink(log_con, split = print_output)
+  on.exit({
+    sink()
+    close(log_con)
+  }, add = TRUE)
   set.seed(Cd)
   
   # Check for minimum required arguments
@@ -255,7 +267,6 @@ leave_out_KSS_fe <- function(y, id, firmid,
   cat(rep("-", 25), "\n")
   cat("Info on the control adjusted outcomes:\n")
   cat(rep("-", 25), "\n")
-  cat("Mean of Outcome: ", mean(DT$y, na.rm = TRUE), "\n")
   cat("Variance of Outcome: ", var(DT$y, na.rm = TRUE), "\n")
   
   # Collapsing

@@ -32,8 +32,8 @@ connected_set <- function(y, id, firmid, lagfirmid, controls, prov_indicator = r
   A <- A[connected_firms, connected_firms]  # subsetting sparse matrix is efficient
 
   # Create igraph object and find connected components
-  g <- igraph::graph_from_adjacency_matrix(A, mode = "undirected", diag=FALSE, add.colnames=NA, add.rownames=NA)
-  cat("Mean Degree of the graph is:", mean(degree(g)), "\n")
+  g <- igraph::graph_from_adjacency_matrix(A, mode = "max", diag = FALSE, add.colnames = NA, add.rownames = NA)
+  cat("Mean Degree of the graph is:", mean(igraph::degree(g)), "\n")
   # Directly find the largest connected component without intermediate steps
   components <- igraph::components(g)
   largest_component <- which.max(components$csize)

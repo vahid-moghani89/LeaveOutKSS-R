@@ -51,8 +51,8 @@ strongc_set <- function(y, id, firmid, controls, min_degree=1 ) {
   A <- A[connected_firms, connected_firms]  # subsetting sparse matrix is efficient
   
   # Create igraph object and find connected components
-  g <- igraph::graph_from_adjacency_matrix(A, mode = "undirected", diag=FALSE, add.colnames=NA, add.rownames=NA)
-  d_g <- degree(g)
+  g <- igraph::graph_from_adjacency_matrix(A, mode = "max", diag = FALSE, add.colnames = NA, add.rownames = NA)
+  d_g <- igraph::degree(g)
   cat("Mean Degree of g is:", mean(d_g), "\n")
   # Filtering based on largest connected component's membership
   firmlst <- connected_firms[d_g >= min_degree]
