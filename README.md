@@ -1,22 +1,30 @@
-LeaveOutKSS-R
-========================
+# LeaveOutKSS-R
 
-Overview
---------
+## Overview
+
 This repository provides example scripts, local data notes, and replication
-materials for using the `LeaveOutKSS` R package.
+materials for the `LeaveOutKSS` R package.
 
-The package is available on CRAN:
-https://cran.r-project.org/web/packages/LeaveOutKSS/index.html
+The package is available on CRAN:  
+https://cran.r-project.org/package=LeaveOutKSS
 
 `LeaveOutKSS` implements leave-out correction methods for variance components
-in two-way fixed effects models, following Kline, Saggio, and Solvsten (2020).
-The R implementation follows the workflow of the original MATLAB package:
+in two-way fixed effects models, following:
+
+> Kline, P., Saggio, R., and Sølvsten, M. (2020), *Leave-Out Estimation of Variance Components*, Econometrica.
+
+The R implementation is conceptually aligned with the original MATLAB package:
 https://github.com/rsaggio87/LeaveOutTwoWay
 
-Repository Contents
--------------------
-- `examples/`: runnable R scripts that demonstrate the main package workflows
+
+---
+
+## Repository Contents
+
+- `examples/`  
+  Runnable R scripts demonstrating core workflows of `LeaveOutKSS`.  
+  Several examples are adapted from, or inspired by, the original MATLAB
+  repository to facilitate comparison across implementations.
 - `data/`: local data notes and auxiliary data for selected examples
 - `package/`: package workspace for `LeaveOutKSS` development
 
@@ -70,6 +78,9 @@ https://github.com/rsaggio87/LeaveOutTwoWay
 
 R package:
 https://cran.r-project.org/web/packages/LeaveOutKSS/index.html
+
+No original methodological contributions are introduced here; all credit for
+the estimation framework belongs to the original authors.
 
 License
 -------
