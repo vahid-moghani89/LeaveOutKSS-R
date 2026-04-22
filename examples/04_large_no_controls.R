@@ -1,42 +1,25 @@
-## Large dataset runner. No controls. Uses JLA + parallel.
-## I either download a big CSV or read from ./data if already present.
+## Large-data runner.
+## This script expects a local CSV at data/large_fake_data.csv.
 
-source("examples/_setup_packages_and_functions.R")
+source("examples/_setup_leaveoutkss.R")
 
-## set this to an online file if you have one; otherwise, look in ./data
-LARGE_URL <- "https://www.dropbox.com/s/ny5tef29ij7ran2/,!large_fake_data.csv?dl=1"
-local_path <- file.path("data", "large_fake_data.csv")
-
-if (nzchar(LARGE_URL)) {
-  tmp <- tempfile(fileext = ".csv")
-  message("Downloading large file..."); utils::download.file(LARGE_URL, tmp, mode = "wb")
-  namesrc <- tmp
-} else {
-  stopifnot(file.exists(local_path))
-  namesrc <- local_path
+path <- file.path("data", "large_fake_data.csv")
+if (!file.exists(path)) {
+  stop("Place a large panel at data/large_fake_data.csv before running this example.", call. = FALSE)
 }
 
-dt <- data.table::fread(namesrc)
-## I expect columns: id, firmid, year, y (in that order)
-## If names differ, adjust the indexing below.
+dt <- data.table::fread(path)
+data.table::setorderv(dt, cols = names(dt)[1:3])
 
-id     <- dt[[1]]
-firmid <- dt[[2]]
-# year <- dt[[3]]
-y      <- dt[[4]]
-
-## JLA with fewer sims first; bump up if time allows
-tictoc::tic()
 res <- leave_out_KSS(
-  y      = y,
-  id     = id,
-  firmid = firmid,
+  y = dt[[4]],
+  id = dt[[1]],
+  firmid = dt[[2]],
   leave_out_level = "matches",
-  type_algorithm  = "JLA",
+  type_algorithm = "JLA",
   simulations_JLA = 50,
-  paral  = TRUE,
-  filename = "leave_out_estimates_large"
+  paral = TRUE,
+  progress = TRUE
 )
-tictoc::toc()
 
-## sanity: rerun with a higher simulations_JLA and compare top-line outputs
+print_key_estimates(res)
