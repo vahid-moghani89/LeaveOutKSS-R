@@ -4,12 +4,22 @@
 .Ruserdata
 .DS_Store
 
+# separately maintained package workspace
+/package/
+
+# R build/check artifacts
+*.tar.gz
+*.Rcheck/
+/LeaveOutKSS.Rcheck/
+
 # outputs
 *.csv
 *.rds
 *.fst
 *.parquet
 *_large*.log
+compare_*.txt
+functions_fast_benchmark_results.md
 
 # local paths
 /local/

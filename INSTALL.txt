@@ -1,19 +1,26 @@
 Install + Setup
 ===============
 
-1) R dependencies (install if missing)
---------------------------------------
-I use these:
-Matrix, data.table, igraph, tictoc, sanic, doParallel, foreach, slam, spam, dplyr
+1) Install LeaveOutKSS from CRAN
+--------------------------------
 
-2) Sourcing functions
----------------------
-I keep core code in ./functions and source everything before running.
-Each example script does this automatically:
+  install.packages("LeaveOutKSS")
 
-  fx <- list.files("functions", full.names = TRUE, pattern = "\\.R$")
-  invisible(lapply(fx, source))
+CRAN page:
+https://cran.r-project.org/web/packages/LeaveOutKSS/index.html
+
+2) Run examples
+---------------
+
+Run scripts from the repository root so their relative paths resolve:
+
+  source("examples/01_basic_no_controls.R")
+
+The examples load the package with:
+
+  library(LeaveOutKSS)
 
 3) Data
 -------
-Column expectations for the examples are in data/README.txt.
+
+Column expectations for local example data are in data/README.txt.

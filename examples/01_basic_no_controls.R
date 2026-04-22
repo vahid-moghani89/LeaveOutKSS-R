@@ -1,33 +1,21 @@
-## Minimal example: no controls, match-level leave-out, JLA
-## I source functions first, then run. Keep it simple.
+## Minimal run on the bundled small panel.
+## This example demonstrates the object-returning API and opt-in progress.
 
-source("examples/_setup_packages_and_functions.R")
+source("examples/_setup_leaveoutkss.R")
 
-## read small test data
-namesrc <- file.path("data", "test.csv")
-stopifnot(file.exists(namesrc))
-dt <- data.table::fread(namesrc, header = FALSE)
+dt <- read_small_test_data()
 
-## columns (stick to the MATLAB test layout)
-id     <- dt$V1
-firmid <- dt$V2
-year   <- dt$V3   # not used here
-y      <- dt$V4
-
-## run KSS
-tictoc::tic()
 res <- leave_out_KSS(
-  y      = y,
-  id     = id,
-  firmid = firmid,
+  y = dt$V4,
+  id = dt$V1,
+  firmid = dt$V2,
   leave_out_level = "matches",
-  type_algorithm  = "JLA",
+  type_algorithm = "JLA",
   simulations_JLA = 200,
-  paral  = TRUE,
-  filename = "leave_out_estimates_basic"
+  paral = FALSE,
+  progress = TRUE
 )
-tictoc::toc()
 
-## notes to self:
-## - printed output has both plug-in and bias-corrected pieces
-## - a CSV "leave_out_estimates_basic.csv" is created in working dir
+print(res)
+print(res$sample_info$leave_one_out_connected_set)
+print(utils::head(res$effects))

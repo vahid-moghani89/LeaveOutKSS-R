@@ -1,24 +1,18 @@
-## Compute TWFE and saturated-model R2 on the small test data.
+## Compare TWFE and saturated-model fit on the bundled small panel.
+## This example demonstrates the object returned by rsquared_comp().
 
-source("examples/_setup_packages_and_functions.R")
+source("examples/_setup_leaveoutkss.R")
 
-namesrc <- file.path("data", "test.csv")
-stopifnot(file.exists(namesrc))
-dt <- data.table::fread(namesrc, header = FALSE)
+dt <- read_small_test_data()
+out <- example_output_stem("rsquared_basic")
 
-id     <- dt$V1
-firmid <- dt$V2
-year   <- dt$V3   # not used here
-y      <- dt$V4
-
-tictoc::tic()
-rsquared_comp(
-  y      = y,
-  id     = id,
-  firmid = firmid,
-  filename = "rsquared_basic"
+res <- rsquared_comp(
+  y = dt$V4,
+  id = dt$V1,
+  firmid = dt$V2,
+  txt_file = paste0(out, ".txt"),
+  progress = FALSE
 )
-tictoc::toc()
 
-## Output file:
-## - rsquared_basic.txt
+print(res)
+cat("TXT written:", file.exists(paste0(out, ".txt")), "\n")
