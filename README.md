@@ -26,7 +26,6 @@ https://github.com/rsaggio87/LeaveOutTwoWay
   Several examples are adapted from, or inspired by, the original MATLAB
   repository to facilitate comparison across implementations.
 - `data/`: local data notes and auxiliary data for selected examples
-- `package/`: package workspace for `LeaveOutKSS` development
 
 The examples are written for the CRAN release of `LeaveOutKSS`, so results can
 be tied to the same package version used in analysis and citation.
