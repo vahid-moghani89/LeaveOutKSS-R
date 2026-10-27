@@ -25,7 +25,11 @@ https://github.com/rsaggio87/LeaveOutTwoWay
   Runnable R scripts demonstrating core workflows of `LeaveOutKSS`.  
   Several examples are adapted from, or inspired by, the original MATLAB
   repository to facilitate comparison across implementations.
-- `data/`: local data notes and auxiliary data for selected examples
+- `data/`: local data notes and auxiliary data for selected examples.
+  The data files (`lincom.csv`, the `test.csv` bundled with the package, and
+  the large file downloaded by `04_large_no_controls.R`) come from the
+  original authors' repository, https://github.com/rsaggio87/LeaveOutTwoWay,
+  and are included only so the examples run end to end.
 
 The examples are written for the CRAN release of `LeaveOutKSS`, so results can
 be tied to the same package version used in analysis and citation.
@@ -67,6 +71,11 @@ Usage Notes
 - For large datasets, use `type_algorithm = "JLA"` and tune
   `simulations_JLA`.
 - Local outputs should be written to temporary folders or ignored paths.
+- Use `LeaveOutKSS` 0.1.1 or later. Version 0.1.0 had a bug in the
+  `type_algorithm = "exact"` option that left the variance components
+  effectively uncorrected (see the package NEWS, and issue #2, reported by
+  santiagohermo). The default `"JLA"` option used by all examples here was
+  not affected.
 
 Provenance
 ----------
